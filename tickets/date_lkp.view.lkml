@@ -1,6 +1,6 @@
 view: date_lkp {
   view_label: "Dates"
-  sql_table_name: TEST_DB.TICKET.DATE ;;
+  sql_table_name: LOOKER_SAMPLE.PUBLIC.DATE ;;
 
   dimension: date_id {
     label: "Date ID"

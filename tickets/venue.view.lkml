@@ -1,6 +1,6 @@
 view: venue {
   view_label: "Venues"
-  sql_table_name: TEST_DB.TICKET.VENUE ;;
+  sql_table_name: LOOKER_SAMPLE.PUBLIC.VENUE ;;
   drill_fields: [detail*]
 
   dimension: venue_id {

@@ -1,6 +1,6 @@
 view: categories {
   view_label: "Categories"
-  sql_table_name: TEST_DB.TICKET.CATEGORY ;;
+  sql_table_name: LOOKER_SAMPLE.PUBLIC.CATEGORY ;;
 
   dimension: cat_id {
     label: "Category ID"

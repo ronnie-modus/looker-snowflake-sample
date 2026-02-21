@@ -1,7 +1,7 @@
 include: "_period_comparison.view.lkml"
 view: sales {
   view_label: "Sales"
-  sql_table_name: TEST_DB.TICKET.SALES ;;
+  sql_table_name: LOOKER_SAMPLE.PUBLIC.SALES ;;
   extends: [_period_comparison]
 
   drill_fields: [detail*]

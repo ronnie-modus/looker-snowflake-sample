@@ -1,6 +1,6 @@
 view: listings {
   view_label: "Listings"
-  sql_table_name: TEST_DB.TICKET.LISTING ;;
+  sql_table_name: LOOKER_SAMPLE.PUBLIC.LISTING ;;
 
   dimension: list_id {
     group_label: "Keys/IDs"

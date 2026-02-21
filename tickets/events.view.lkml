@@ -1,6 +1,6 @@
 view: events {
   view_label: "Events"
-  sql_table_name: TEST_DB.TICKET.EVENT ;;
+  sql_table_name: LOOKER_SAMPLE.PUBLIC.EVENT ;;
   drill_fields: [event_id]
 
   dimension: event_id {

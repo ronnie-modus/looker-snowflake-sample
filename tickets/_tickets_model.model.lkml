@@ -36,10 +36,10 @@ explore: events {
     sql_on:  ${events.date_id} = ${date_lkp.date_id} ;;
   }
 
-  access_filter: {
-    field: venue.venue_id
-    user_attribute: venue_id_ua
-  }
+  # access_filter: {
+  #   field: venue.venue_id
+  #   user_attribute: venue_id_ua
+  # }
 
 }
 
@@ -135,32 +135,32 @@ explore: sales {
 # https://bytecode.looker.com/explore/_tickets_model/sales?qid=srl6rKyegGovqSUfqPpe8W&toggle=fil,vis
 # Also used on Dashboard:
 
-explore: +sales {
-  aggregate_table: rollup__sales_month__venue_state {
-    query: {
-      dimensions: [sales_month, venue.state]
-      measures: [avg_commission, avg_price_paid, total_tickets_sold]
-      timezone: "UTC"
-    }
+# explore: +sales {
+#   aggregate_table: rollup__sales_month__venue_state {
+#     query: {
+#       dimensions: [sales_month, venue.state]
+#       measures: [avg_commission, avg_price_paid, total_tickets_sold]
+#       timezone: "UTC"
+#     }
 
-    # Please specify a datagroup_trigger or sql_trigger_value
-    # See https://looker.com/docs/r/lookml/types/aggregate_table/materialization
-    materialization: {
-      sql_trigger_value: SELECT CURDATE() ;; # IRL use a data_group
-    }
-  }
+#     # Please specify a datagroup_trigger or sql_trigger_value
+#     # See https://looker.com/docs/r/lookml/types/aggregate_table/materialization
+#     materialization: {
+#       sql_trigger_value: SELECT CURDATE() ;; # IRL use a data_group
+#     }
+#   }
 
-  aggregate_table: rollup__sales_month__venue_state_pt { # Time Zone is changed here.
-    query: {
-      dimensions: [sales_month, venue.state]
-      measures: [avg_commission, avg_price_paid, total_tickets_sold]
-      timezone: "America/Los_Angeles"
-    }
+#   aggregate_table: rollup__sales_month__venue_state_pt { # Time Zone is changed here.
+#     query: {
+#       dimensions: [sales_month, venue.state]
+#       measures: [avg_commission, avg_price_paid, total_tickets_sold]
+#       timezone: "America/Los_Angeles"
+#     }
 
-    # Please specify a datagroup_trigger or sql_trigger_value
-    # See https://looker.com/docs/r/lookml/types/aggregate_table/materialization
-    materialization: {
-      sql_trigger_value: SELECT CURDATE() ;; # IRL use a data_group
-    }
-  }
-}
+#     # Please specify a datagroup_trigger or sql_trigger_value
+#     # See https://looker.com/docs/r/lookml/types/aggregate_table/materialization
+#     materialization: {
+#       sql_trigger_value: SELECT CURDATE() ;; # IRL use a data_group
+#     }
+#   }
+# }

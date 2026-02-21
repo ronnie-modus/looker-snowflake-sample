@@ -1,6 +1,6 @@
 view: users {
   view_label: "Users"
-  sql_table_name: TEST_DB.TICKET.USERS ;;
+  sql_table_name: LOOKER_SAMPLE.PUBLIC.USERS ;;
   drill_fields: [detail*]
 
   parameter: likes_category {
