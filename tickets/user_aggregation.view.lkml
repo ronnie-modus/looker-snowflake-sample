@@ -23,6 +23,7 @@ view: user_aggregation {
     measure: avg_lifetime_paid {
       type: average
       sql: ${TABLE}.lifetime_paid ;;
+      value_format_name: usd
     }
 
   measure: avg_lifetime_tickets {
