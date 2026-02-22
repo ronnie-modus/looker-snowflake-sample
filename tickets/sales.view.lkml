@@ -225,6 +225,33 @@ view: sales {
     drill_fields: [detail*]
     filters: [is_comparison_period: "Yes"]
   }
+# 1. THE PARAMETER (Creates the dropdown menu)
+  parameter: date_granularity {
+    label: "Date Granularity"
+    type: unquoted
+    allowed_value: { label: "Daily" value: "day" }
+    allowed_value: { label: "Weekly" value: "week" }
+    allowed_value: { label: "Monthly" value: "month" }
+    allowed_value: { label: "Yearly" value: "year" }
+    default_value: "month"
+  }
+
+  # 2. THE DYNAMIC DIMENSION (Changes the data based on the dropdown)
+  dimension: dynamic_timeframe {
+    label_from_parameter: date_granularity # This makes the column header dynamically update!
+    sql:
+      {% if date_granularity._parameter_value == 'day' %}
+        ${sales_date}
+      {% elsif date_granularity._parameter_value == 'week' %}
+        ${sales_week}
+      {% elsif date_granularity._parameter_value == 'month' %}
+        ${sales_month}
+      {% elsif date_granularity._parameter_value == 'year' %}
+        ${sales_year}
+      {% else %}
+        ${sales_month}
+      {% endif %} ;;
+  }
 
   set: detail {
     fields: [
