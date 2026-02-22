@@ -253,6 +253,39 @@ view: sales {
       {% endif %} ;;
   }
 
+# ---------------------------------------------------------
+  # DYNAMIC CATEGORICAL BREAKDOWN
+  # ---------------------------------------------------------
+
+  # 1. THE PARAMETER (Creates the dropdown menu)
+  parameter: breakdown_selector {
+    label: "Breakdown By:"
+    type: unquoted
+    allowed_value: { label: "Event Category" value: "category" }
+    allowed_value: { label: "Venue State" value: "state" }
+    allowed_value: { label: "Event Name" value: "event_name" }
+    allowed_value: { label: "Ticket Buyer City" value: "buyer_city" }
+    default_value: "category"
+  }
+
+  # 2. THE DYNAMIC DIMENSION (Swaps the column based on the dropdown)
+  dimension: dynamic_breakdown {
+    label_from_parameter: breakdown_selector
+    # Using Liquid to point to the correct dimension across your joined views!
+    sql:
+      {% if breakdown_selector._parameter_value == 'category' %}
+        ${categories.cat_name}
+      {% elsif breakdown_selector._parameter_value == 'state' %}
+        ${venue.state}
+      {% elsif breakdown_selector._parameter_value == 'event_name' %}
+        ${events.event_name}
+      {% elsif breakdown_selector._parameter_value == 'buyer_city' %}
+        ${buyers.city}
+      {% else %}
+        'No Breakdown Selected'
+      {% endif %} ;;
+  }
+
   set: detail {
     fields: [
       sales_id,
