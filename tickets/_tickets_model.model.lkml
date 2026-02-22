@@ -129,6 +129,12 @@ explore: sales {
     relationship: many_to_one
     sql_on:  ${sales.date_id} = ${date_lkp.date_id} ;;
   }
+  join: user_aggregation {
+    view_label: "User aggregations"
+    type: left_outer
+    relationship: many_to_one
+    sql_on:  ${sales.buyer_id} = ${user_aggregation.buyer_id} ;;
+  }
 }
 
 # Aggregate Table for explore:
